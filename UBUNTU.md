@@ -2,16 +2,12 @@
 
 
 
-
+RELOAD & RESTART SERVICE
 
 ```bash
 sudo systemctl reload mysql.service
 sudo systemctl restart mysql.service
 ```
-
-
-
-
 
 ```bash
 sudo ufw allow 5432/tcp
@@ -19,60 +15,83 @@ sudo ufw allow 5432/tcp
 
 > Allow port 5432 in uncomplicated firewall
 
-## User Management
 
 
-### List all users
+<hr>
+
+#### USER MANAGEMENT
+
+
+
+1. List all users:
 
     cut -d: -f1 /etc/passwd
 
-### Create SUDO user
+### 
 
-#### Create username
+2. Create new user:
 
     adduser username
     sudo adduser username
 
-#### Add user into SUDO group
+
+
+3. Add user to sudo group:
 
     usermod -aG sudo username
     sudo usermod -aG sudo username
 
-### List all groups
+
+
+4. List all groups
 
     getent group
 
-### Create Group
+
+
+5. Create new group:
 
     addgroup groupname
 
-### Delete Group
+
+
+6. Delete group:
 
     groupdel Group_Name
 
-### Add user to created group
+
+
+7. Add user to group:
 
     adduser username groupname
 
-### Delete user
+
+
+8. Delete user:
 
     userdel username
 
-### Modify user
+### 
 
-#### To modify the username of a user:
+9. Modify username:
 
     usermod -l new_username old_username
 
-#### To change the password for a user:
+#### 
+
+10. Set user password:
 
     passwd username
 
-#### To change the shell for a user:
+
+
+11. Change shell of user:
 
     chsh username
 
-#### To show detail user information:
+#### 
+
+12. Show detail information of user:
 
     finger username
     id username
