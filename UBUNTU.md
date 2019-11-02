@@ -25,75 +25,99 @@ sudo ufw allow 5432/tcp
 
 1. List all users:
 
-    cut -d: -f1 /etc/passwd
+```bash
+cut -d: -f1 /etc/passwd
+```
 
 ### 
 
 2. Create new user:
 
-    adduser username
-    sudo adduser username
+```bash
+adduser username
+sudo adduser username
+```
 
 
 
 3. Add user to sudo group:
 
-    usermod -aG sudo username
-    sudo usermod -aG sudo username
+```bash
+usermod -aG sudo username
+sudo usermod -aG sudo username
+```
 
 
 
 4. List all groups
 
-    getent group
+```bash
+getent group
+```
 
 
 
 5. Create new group:
 
-    addgroup groupname
+```bash
+addgroup groupname
+```
 
 
 
 6. Delete group:
 
-    groupdel Group_Name
+```bash
+groupdel Group_Name
+```
 
 
 
 7. Add user to group:
 
-    adduser username groupname
+```bash
+adduser username groupname
+```
 
 
 
 8. Delete user:
 
-    userdel username
+```bash
+userdel username
+```
 
 ### 
 
 9. Modify username:
 
-    usermod -l new_username old_username
+```bash
+usermod -l new_username old_username
+```
 
 #### 
 
 10. Set user password:
 
-    passwd username
+```bash
+passwd username
+```
 
 
 
 11. Change shell of user:
 
-    chsh username
+```bash
+chsh username
+```
 
 #### 
 
 12. Show detail information of user:
 
-    finger username
-    id username
+```bash
+finger username
+id username
+```
 
 
