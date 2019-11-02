@@ -149,3 +149,13 @@ def function(positional, *arguments, **keywords):
 >
 > *arguments must occurs before **keywords
 
+
+
+
+
+##### GENERATE UNIQUE RANDOM KEY
+
+```bash
+python -c 'import os; print(os.urandom(16))'
+```
+
