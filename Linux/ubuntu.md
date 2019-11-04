@@ -120,6 +120,10 @@ finger username
 id username
 ```
 
+13. Switch to root user:
+```bash
+sudo -i
+```
 
 
 <hr>
