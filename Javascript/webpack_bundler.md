@@ -16,3 +16,13 @@ Install webpack locally:
 npm install webpack webpack-cli --save-dev
 ```
 
+
+
+Add ```npm run build```: 
+
+```json
+"scripts": {
+    "build": "webpack"
+ }
+```
+
