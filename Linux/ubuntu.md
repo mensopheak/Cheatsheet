@@ -127,8 +127,9 @@ sudo -i
 
 
 <hr>
+<br>
 
-#### HOW SSH WITHOUT PASSWORD (MORE SECURE):
+#### HOW TO SSH WITHOUT PASSWORD (MORE SECURE):
 
  <br>
 
