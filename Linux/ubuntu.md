@@ -66,6 +66,30 @@ ufw status : # list active application
 
 <br><br>
 
+## NETWORKING
+
+```bash
+ifconfig
+# check IP address assigned to the system
+
+telnet <domain-name/IP> <port> 
+# telnet connect destination host:port via a telnet protocol if connection establishes means connectivity between two hosts is working fine
+
+nslookup <domain-name/IP>
+# nslookup is a program to query Internet domain name servers => return name and IP
+
+netstat
+# command allows you a simple way to review each of your network connections and open sockets
+
+scp $filename user@targethost:/$path
+# scp allows you to secure copy files to and from another host in the network
+
+w 
+# w prints a summary of the current activity on the system, including what each user is doing, and their processes. Also list the logged in users and system load average for the past 1, 5, and 15 minutes
+```
+
+<br><br>
+
 <hr>
 
 ## SET UP SSH WITHOUT PASSWORD (MORE SECURE):
@@ -298,17 +322,6 @@ apt install python-certbot-nginx
 
 ```bash
 certbot --nginx -d example.com -d www.example.com
-```
-
-```bash
-1: No redirect - Make no further changes to the webserver configuration.
-2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
-new sites, or if you're confident your site works on HTTPS. You can undo this
-change by editing your web server's configuration.
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
-Redirecting all traffic on port 80 to ssl in /etc/nginx/sites-enabled/default
-Redirecting all traffic on port 80 to ssl in /etc/nginx/sites-enabled/default
 ```
 
 <br>
