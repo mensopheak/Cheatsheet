@@ -46,7 +46,8 @@ systemctl status application.service
 systemctl is-active application.service
 systemctl is-enabled application.service
 systemctl is-failed application.service
-systemctl list-units --type:service : # list units type service that systemd currently has active on the system
+systemctl list-units --type=service : # list units type service that systemd currently has active on the system
+systemctl list-units --all --state=inactive : # list units all services that systemd currently has inactive on the system
 
 systemctl poweroff : # shutdown
 systemctl reboot : # restart
@@ -332,4 +333,100 @@ certbot --nginx -d example.com -d www.example.com
 # Only valid for 90 days, test the renewal process with
 certbot renew --dry-run
 ```
+
+<br>
+
+<br>
+
+## INSTALL PHP AND SETUP
+
+Install "FastCGI Process Manager" to manage FastCGI in php
+
+```bash
+apt install php<version>-fpm
+
+systemctl status php<version>-fpm.service
+```
+
+<br>
+
+Create "index.php"
+
+```bash
+# add /var/www/example.com/index.php
+
+<?php 
+	phpinfo();
+?>
+```
+
+<br>
+
+Configure "sites-available"
+
+```bash
+# config /etc/nginx/sites-available
+
+server
+{
+    if ($host = www.example.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = example.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+  listen 80;
+  listen [::]:80;
+  server_name example.com www.example.com;
+  return 301 https://$server_name$request_uri;
+
+}
+server
+{
+    listen 443 ssl http2;
+    listen [::]:443 ssl;
+    server_name example.com www.example.com;
+
+    ssl on;
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
+    
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    root /var/www/example.com;
+
+    location / {
+        try_files $uri $uri/ /index.php;
+    }
+
+    location ~* \.php$ {
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        if (!-f $document_root$fastcgi_script_name) {return 404;} 
+        fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}
+```
+
+> Note: php-fpm version
+
+<br>
+
+Link to "sites-enabled" for production and restart service for taking affect
+
+```bash
+ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled
+systemctl restart nginx.service
+```
+
+
+
+
 
