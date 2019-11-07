@@ -338,7 +338,7 @@ certbot renew --dry-run
 
 <br>
 
-## INSTALL PHP AND SETUP
+## INSTALL PHP & SETUP NGINX
 
 Install "FastCGI Process Manager" to manage FastCGI in php
 
